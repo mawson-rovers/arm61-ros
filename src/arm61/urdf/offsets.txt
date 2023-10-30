@@ -1,0 +1,13 @@
+Joint 1: 25 mm
+Joint 2: 85 mm
+Joint 3: 65 mm
+Joint 4: 86 mm
+
+Joint 1: +65 deg
+	 -65 deg
+Joint 2: +155 deg
+	 -15 deg
+Joint 3: +155 deg
+	 -15 deg
+Joint 4: +inf
+	 -inf

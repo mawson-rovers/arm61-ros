@@ -1,0 +1,11 @@
+# Ignore ROS2 build directories
+build/
+install/
+log/
+
+# Compiled python files
+*.pyc
+
+# Vim backups
+*~
+

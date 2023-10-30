@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+
+<!-- URDF and models created by Dominik Daners 30-10-2023 -->
+
+<robot name="arm61">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="grey">
+    <color rgba="0.7 0.7 0.7 1"/>
+  </material>
+
+  <material name="amber">
+    <color rgba="1 0.75 0 1"/>
+  </material>
+
+  <!-- LINKS -->
+  <link name="base">
+    <visual>
+      <geometry>
+        <mesh filename="package://arm61/urdf/lowPoly/base.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <link name="shoulder">
+    <visual>
+      <geometry>
+        <mesh filename="package://arm61/urdf/lowPoly/shoulder.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <link name="elbow">
+    <visual>
+      <geometry>
+        <mesh filename="package://arm61/urdf/lowPoly/elbow.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <link name="wrist">
+    <visual>
+      <geometry>
+        <mesh filename="package://arm61/urdf/lowPoly/wrist.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <link name="endEffector">
+    <visual>
+      <geometry>
+        <mesh filename="package://arm61/urdf/lowPoly/endEffector.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+<!-- JOINTS -->
+
+  <joint name="joint_1" type="revolute">
+    <axis xyz="0 0 -1"/>
+    <!-- Joint limits -65 deg to + 65 deg  -->
+    <limit effort="1000.0" lower="-1.134464" upper="1.134464" velocity="0.5"/>
+    <origin rpy="1.570796 0 0" xyz="0.025 0.0 0.0"/>
+    <parent link="base"/>
+    <child link="shoulder"/>
+  </joint>
+
+  <joint name="joint_2" type="revolute">
+    <axis xyz="0 0 -1"/>
+    <!-- Joint limits -155 deg to + 15 deg  -->
+    <limit effort="1000.0" lower="-2.70526" upper="0.2617994" velocity="0.5"/>
+    <origin rpy="0 0 -1.570796" xyz="0.085 0.0 0.0"/>
+    <parent link="shoulder"/>
+    <child link="elbow"/>
+  </joint>
+
+  <joint name="joint_3" type="revolute">
+    <axis xyz="0 0 -1"/>
+    <!-- Joint limits -155 deg to + 15 deg  -->
+    <limit effort="1000.0" lower="-2.70526" upper="0.2617994" velocity="0.5"/>
+    <origin rpy="0 0 -1.570796" xyz="0.065 0.0 0.0"/>
+    <parent link="elbow"/>
+    <child link="wrist"/>
+  </joint>
+
+  <joint name="joint_4" type="revolute">
+    <axis xyz="0 0 -1"/>
+    <!-- No joint limits but defined at +- 360 deg -->
+    <limit effort="1000.0" lower="-6.283185" upper="6.283185" velocity="0.5"/>
+    <origin rpy="1.570796 0 1.570796" xyz="0.086 0.0 0.0"/>
+    <parent link="wrist"/>
+    <child link="endEffector"/>
+  </joint>
+
+</robot>
